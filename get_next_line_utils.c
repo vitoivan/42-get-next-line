@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:08:02 by victor            #+#    #+#             */
-/*   Updated: 2022/03/23 17:06:58 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:22:17 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *s)
 	n = 0;
 	if (s == NULL)
 		return (0);
-	while (s[n])
+	while (s[n] && s[n] != '\0')
 		n++;
 	return ((size_t) n);
 }

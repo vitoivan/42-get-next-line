@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/03/23 17:11:28 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:15:09 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ static char	*get_line(char **rest)
 	return (line);
 }
 
-static char	*return_line(ssize_t bytes_read, char **rest)
+static char	*return_line(ssize_t bytes_read, char **rest, char **buffer)
 {
+	free(*buffer);
 	if (bytes_read > 0 || *rest != NULL)
 		return (get_line(rest));
 	return (NULL);
@@ -88,6 +89,5 @@ char	*get_next_line(int fd)
 			break ;
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
-	free(buffer);
-	return (return_line(bytes_read, &rest));
+	return (return_line(bytes_read, &rest, &buffer));
 }
