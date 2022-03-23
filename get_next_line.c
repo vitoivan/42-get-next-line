@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/03/23 17:06:26 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:11:28 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ char	*get_next_line(int fd)
 			break ;
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
+	free(buffer);
 	return (return_line(bytes_read, &rest));
 }
