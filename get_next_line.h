@@ -6,19 +6,18 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:09:02 by victor            #+#    #+#             */
-/*   Updated: 2022/02/25 22:19:44 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:20:21 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-# define	GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 // Includes
 # include <stdlib.h>
 # include <unistd.h>
 
 // Macros
-# define	BUFFER BUFFER_SIZE
 
 // Prototypes
 char	*get_next_line(int fd);

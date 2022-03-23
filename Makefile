@@ -1,34 +1,32 @@
-_SRC = get_next_line.c
-_SRC_BONUS = get_next_line_bonus.c
-
-SDIR = src
-ODIR = build
-
-
-SRC = $(addprefix $(SDIR)/,$(_SRC))
-SRC_BONUS = $(addprefix $(SDIR)/,$(_SRC_BONUS))
-
-
-
-OBJ = $(addprefix $(ODIR)/,$(_SRC:%.c=%.o))
-
+# Compiler options
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(B)
+CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(BUFFER)
 
+# Target SRC
+TARGET = get_next_line.c get_next_line_utils.c tests/main.c
 
-all: re
+# Objects
+OBJS = $(TARGET:.c=.o)
 
-$(ODIR)/%.o: $(SDIR)/%.c
+MAIN = gnl
 
-	@mkdir -p $(ODIR)
-	$(CC) -c -o $@ $< $(CFLAGS)
+all: $(MAIN)
+	@echo "Simple compiler named $(MAIN) has been compiled"
+
+$(MAIN): $(OBJS)
+	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
 clean:
-	@rm -f $(SDIR)/*.o  $(SDIR)/*.out
-	@rm -f $(ODIR)/*.o
-	@rm -f *.out
+	rm -f *.o tests/*.o
 
+fclean: clean
+	rm -f $(MAIN)
+	rm -f *.out
 
-re: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o gnl.out
+re: $(OBJS)
+	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
+test: clean $(MAIN)
+	./$(MAIN) ./teste.txt
+
+.PHONY: clean

@@ -6,12 +6,11 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/02/25 22:18:51 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:06:26 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*linedup(char **rest, size_t size)
 {
@@ -39,18 +38,15 @@ static char	*get_line(char **rest)
 	size_t	size;
 	char	*tmp;
 	char	*line;
-	size_t	size_aux;
 
 	size = 0;
 	while (rest[0][size] && rest[0][size] != '\n')
 		size++;
 	line = linedup(rest, size + 1);
-	tmp = ft_strdup(*(rest) + size + 1);
+	tmp = ft_strdup(*(rest) + (size + 1));
 	free(*rest);
-	if (ft_strlen(tmp) > 0)
-	{
+	if (ft_strlen(tmp) > 0 && (*rest)[size] != '\0')
 		*rest = tmp;
-	}
 	else
 	{
 		*rest = NULL;
@@ -59,16 +55,11 @@ static char	*get_line(char **rest)
 	return (line);
 }
 
-static char	*return_line(ssize_t bytes_read, char **rest )
+static char	*return_line(ssize_t bytes_read, char **rest)
 {
-	if (bytes_read >= 0 && *rest != NULL)
-	{
+	if (bytes_read > 0 || *rest != NULL)
 		return (get_line(rest));
-	}
-	else if (*rest != NULL)
-	{
-		return (NULL);
-	}
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -78,8 +69,10 @@ char	*get_next_line(int fd)
 	static char	*rest;
 	char		*aux;
 
-	buffer = (char *) malloc(sizeof(char) * BUFFER + 1);
-	bytes_read = read(fd, buffer, BUFFER);
+	buffer = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (buffer == NULL)
+		return (NULL);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
 		buffer[bytes_read] = '\0';
@@ -93,7 +86,7 @@ char	*get_next_line(int fd)
 		}
 		if (ft_strchr(buffer, '\n'))
 			break ;
-		bytes_read = read(fd, buffer, BUFFER);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	return (return_line(bytes_read, &rest));
 }
