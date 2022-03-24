@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/03/23 17:15:09 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/24 17:18:47 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static char	*get_line(char **rest)
 	char	*line;
 
 	size = 0;
-	while (rest[0][size] && rest[0][size] != '\n')
+	while ((*rest)[size] && (*rest)[size] != '\n' && (*rest)[size] != '\0')
 		size++;
 	line = linedup(rest, size + 1);
-	tmp = ft_strdup(*(rest) + (size + 1));
+	tmp = ft_strdup((*rest) + (size + 1));
 	free(*rest);
 	if (ft_strlen(tmp) > 0 && (*rest)[size] != '\0')
 		*rest = tmp;
@@ -58,7 +58,7 @@ static char	*get_line(char **rest)
 static char	*return_line(ssize_t bytes_read, char **rest, char **buffer)
 {
 	free(*buffer);
-	if (bytes_read > 0 || *rest != NULL)
+	if ((bytes_read > 0 || bytes_read == 0) && *rest != NULL)
 		return (get_line(rest));
 	return (NULL);
 }
