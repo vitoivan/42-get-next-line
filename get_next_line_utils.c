@@ -6,11 +6,12 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:08:02 by victor            #+#    #+#             */
-/*   Updated: 2022/03/23 17:22:17 by victor           ###   ########.fr       */
+/*   Updated: 2022/03/24 17:55:43 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
