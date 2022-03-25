@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/03/24 19:00:19 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/03/25 09:38:43 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ char	*get_next_line(int fd)
 	char		*aux;
 
 	buffer = malloc(BUFFER_SIZE + 1);
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (!buffer)
 		return (NULL);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
 		buffer[bytes_read] = '\0';
 		if (rest == NULL)
-			rest = ft_strdup(&buffer[0]);
+			rest = ft_strdup(buffer);
 		else
 		{
 			aux = ft_strjoin(rest, buffer);
