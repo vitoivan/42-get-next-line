@@ -4,29 +4,35 @@ CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(BUFFER)
 
 # Target SRC
 TARGET = get_next_line.c get_next_line_utils.c tests/main.c
-TEST_TARGET = tests/main.c
+
+BONUS_TARGET = get_next_line_bonus.c get_next_line_utils.c test/main.c
 
 # Objects
 OBJS = $(TARGET:.c=.o)
+BONUS_OBJS = $(BONUS_TARGET:.c=.o)
 
-MAIN = gnl
+NAME = gnl
 
-all: $(MAIN)
+all: $(NAME)
 
-$(MAIN): $(OBJS)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	rm -f *.o tests/*.o
 
 fclean: clean
-	rm -f $(MAIN)
+	rm -f $(NAME)
 	rm -f *.out
 
 re: $(OBJS)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-test: clean $(MAIN)
-	./$(MAIN) $(file)
 
-.PHONY: all clean fclean re test 
+bonus: $(BONUS_OBJS) 
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS)
+
+test: clean $(NAME)
+	./$(NAME) $(file)
+
+.PHONY: all clean fclean re test bonus 

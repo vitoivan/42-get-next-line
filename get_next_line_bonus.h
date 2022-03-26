@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:09:02 by victor            #+#    #+#             */
-/*   Updated: 2022/03/26 13:30:29 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:25:26 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 //  Malloc and Free
 # include <stdlib.h>
@@ -19,6 +19,7 @@
 # include <unistd.h>
 
 // Macros
+# define MAX_FD 100
 
 // Prototypes
 char	*get_next_line(int fd);
