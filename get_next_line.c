@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 11:11:51 by victor            #+#    #+#             */
-/*   Updated: 2022/03/25 09:38:43 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/03/26 12:29:31 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static char	*linedup(char **rest, size_t size)
 	size_t	i;
 
 	i = 0;
-	line = (char *) malloc(sizeof(char) + size);
+	line = (char *) malloc(sizeof(char) + size + 1);
 	if (!line)
 	{
 		free(*rest);
 		return (NULL);
 	}
-	while (i < size)
+	while (i <= size)
 	{
 		line[i] = (*rest)[i];
 		i++;
@@ -49,11 +49,12 @@ static char	*get_line(char **rest)
 	char	*tmp;
 	char	*line;
 
+	tmp = NULL;
 	size = get_line_len(*rest);
-	line = linedup(rest, size + 1);
-	tmp = ft_strdup(*(rest) + (size + 1));
+	line = linedup(rest, size);
 	if ((*rest)[size] != '\0')
 	{
+		tmp = ft_strdup(*(rest) + (size + 1));
 		free(*rest);
 		*rest = tmp;
 	}
@@ -61,7 +62,11 @@ static char	*get_line(char **rest)
 	{
 		free(*rest);
 		*rest = NULL;
-		free(tmp);
+	}
+	if (ft_strlen(line) == 0)
+	{
+		free(line);
+		return (NULL);
 	}
 	return (line);
 }
@@ -69,8 +74,11 @@ static char	*get_line(char **rest)
 static char	*return_line(ssize_t bytes_read, char **rest, char **buffer)
 {
 	free(*buffer);
-	if ((bytes_read > 0 || bytes_read == 0) && *rest != NULL)
-		return (get_line(rest));
+	if (*rest != NULL)
+	{
+		if (bytes_read >= 0)
+			return (get_line(rest));
+	}
 	return (NULL);
 }
 

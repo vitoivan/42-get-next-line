@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(BUFFER)
 
 # Target SRC
 TARGET = get_next_line.c get_next_line_utils.c tests/main.c
+TEST_TARGET = tests/main.c
 
 # Objects
 OBJS = $(TARGET:.c=.o)
@@ -11,7 +12,6 @@ OBJS = $(TARGET:.c=.o)
 MAIN = gnl
 
 all: $(MAIN)
-	@echo "Simple compiler named $(MAIN) has been compiled"
 
 $(MAIN): $(OBJS)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
@@ -27,6 +27,6 @@ re: $(OBJS)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
 test: clean $(MAIN)
-	./$(MAIN) ./teste.txt
+	./$(MAIN) $(file)
 
-.PHONY: clean
+.PHONY: all clean fclean re test 
