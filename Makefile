@@ -1,11 +1,11 @@
 # Compiler options
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(BUFFER)
+CC = cc 
+CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=$(BUFFER_SIZE)
 
 # Target SRC
-TARGET = get_next_line.c get_next_line_utils.c tests/main.c
+TARGET = get_next_line.c get_next_line_utils.c 
 
-BONUS_TARGET = get_next_line_bonus.c get_next_line_utils.c test/main.c
+BONUS_TARGET = get_next_line_bonus.c get_next_line_utils.c 
 
 # Objects
 OBJS = $(TARGET:.c=.o)
