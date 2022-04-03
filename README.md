@@ -7,6 +7,7 @@
 
 - This project in general was easy, but the major struggling here was avoid memory leaks (all funcions are tested with valgrind)
   
+> In the bonus part i need to read from different file descriptors and also maintain the tracking of the content of these files using just one static variable
 
 <h3 align="center">125/100 &nbsp;&nbsp;:heavy_check_mark:</h3>
 <p align="center"> 
