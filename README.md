@@ -1,6 +1,6 @@
 <h1 align="center">42_get_next_line</h1>  
 
-> My second project at 42 São Paulo, where i need to write a program in C that read a file from a [file descriptor](https://en.wikipedia.org/wiki/File_descriptor) and return the fist line of this file.
+> My second project at [42 São Paulo](https://www.42sp.org.br/), where i need to write a program in C that read a file from a [file descriptor](https://en.wikipedia.org/wiki/File_descriptor) and return the fist line of this file.
 > Here the idea was learn about [staic variables](https://www.geeksforgeeks.org/static-variables-in-c/) and file descriptors  
 
 > This project was made according to [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf)
