@@ -12,7 +12,3 @@
 <p align="center"> 
   <img align="center" src="https://github.com/vitoivan/vitoivan/raw/master/42_icons/get_next_line.png" />
 </p>
-
-## Thoughts
-   - The "click" occurred when i understand the functionality of a static variable, and how it is stored  
-   - This project in general was easy, but the major struggling here was avoid memory leaks (all funcions are tested with [Valgrind](https://valgrind.org/))  
